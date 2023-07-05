@@ -16,8 +16,8 @@ const finalFloor = (instructions) => {
 const main = () => {
   const instructions = fs.readFileSync("day1-instructions.txt", "utf-8");
   const position = finalFloor(instructions);
-
-  console.log(position);
 };
 
 main();
+
+exports.finalFloor = finalFloor;
