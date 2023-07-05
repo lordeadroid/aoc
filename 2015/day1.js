@@ -1,23 +1,34 @@
 const fs = require("fs");
 
-const finalFloor = (instructions) => {
+const positionAfterEach = (instructions) => {
   const instructionRecord = {
     "(": 0,
     ")": 0
   };
 
-  instructions.split("").forEach(instruction => {
-    instructionRecord[instruction]++;
+  return instructions.split("").map(instruction => {
+    instructionRecord[instruction] += 1;
+    return instructionRecord["("] - instructionRecord[")"];
   });
+};
 
-  return instructionRecord["("] - instructionRecord[")"];
-}
+const getFinalFloor = (positions) => positions[positions.length - 1];
+
+const getBasementIndex = (positions) => positions.findIndex((position) => position === -1) + 1;
 
 const main = () => {
   const instructions = fs.readFileSync("day1-instructions.txt", "utf-8");
-  const position = finalFloor(instructions);
+  const positionsOfSanta = positionAfterEach(instructions);
+
+  const finalFloor = getFinalFloor(positionsOfSanta);
+  const basementIndex = getBasementIndex(positionsOfSanta);
+
+  console.log("final floor", finalFloor);
+  console.log("basement index", basementIndex);
 };
 
 main();
 
-exports.finalFloor = finalFloor;
+exports.positionAfterEach = positionAfterEach;
+exports.getFinalFloor = getFinalFloor;
+exports.getBasementIndex = getBasementIndex
