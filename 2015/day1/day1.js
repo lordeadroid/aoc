@@ -1,16 +1,16 @@
 const fs = require("fs");
 
 const finalFloor = (instructions) => {
-  const ins = {
+  const instructionRecord = {
     "(": 0,
     ")": 0
   };
 
   instructions.split("").forEach(instruction => {
-    ins[instruction]++;
+    instructionRecord[instruction]++;
   });
 
-  return ins["("] - ins[")"];
+  return instructionRecord["("] - instructionRecord[")"];
 }
 
 const main = () => {
