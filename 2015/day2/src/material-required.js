@@ -1,29 +1,36 @@
 const area = (a, b) => a * b;
+const volume = (l, w, h) => l * w * h;
+const maxSide = (l, w, h) => Math.max(l, w, h);
 
-const calculateBoxSurfaceArea = (l, w, h) => {
+const calBoxSurfaceArea = (l, w, h) => {
   return 2 * (area(l, w) + area(w, h) + area(h, l));
 };
 
 const minimumSideArea = (l, w, h) => {
-  const volume = l * w * h;
-  const maxSide = Math.max(l, w, h);
-
-  return volume / maxSide;
+  return volume(l, w, h) / maxSide(l, w, h);
 };
 
-const calculateWrappingPaperArea = (l, w, h) => {
-  return calculateBoxSurfaceArea(l, w, h) + minimumSideArea(l, w, h);
+const calWrappingPaperArea = (l, w, h) => {
+  return calBoxSurfaceArea(l, w, h) + minimumSideArea(l, w, h);
 };
 
 const getDimension = (dimension) => {
   return dimension.split("x").map(side => +side);
 };
 
-const calculateTotalWrappingPaper = (instructions) => {
+const calTotalWrappingPaper = (instructions) => {
   return instructions.split("\n").reduce((totalPaper, instruction) => {
     const [l, w, h] = getDimension(instruction);
-    return totalPaper + calculateWrappingPaperArea(l, w, h);
+    return totalPaper + calWrappingPaperArea(l, w, h);
   }, 0);
 };
 
-module.exports = { calculateBoxSurfaceArea, calculateWrappingPaperArea, calculateTotalWrappingPaper };
+const calSmallestFacePerimeter = (l, w, h) => {
+  return 2 * (l + w + h - maxSide(l, w, h));
+};
+
+const calRibbonLength = (l, w, h) => {
+  return calSmallestFacePerimeter(l, w, h) + volume(l, w, h);
+};
+
+module.exports = { calBoxSurfaceArea, calWrappingPaperArea, calTotalWrappingPaper, calRibbonLength };

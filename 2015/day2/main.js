@@ -1,6 +1,6 @@
 const fs = require("fs");
 
-const { calculateTotalWrappingPaper } = require("./src/material-required.js");
+const { calTotalWrappingPaper } = require("./src/material-required.js");
 
 const readInstructions = () => {
   const instructionFilePath = "./resources/instructions.txt";
@@ -10,7 +10,7 @@ const readInstructions = () => {
 const main = () => {
   const instructions = readInstructions();
 
-  console.log(calculateTotalWrappingPaper(instructions));
+  console.log(calTotalWrappingPaper(instructions));
 };
 
 main();
