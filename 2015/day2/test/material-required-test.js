@@ -1,7 +1,7 @@
 const { strictEqual } = require("assert");
 const { describe, it } = require("node:test");
 
-const { calBoxSurfaceArea, calWrappingPaperArea, calTotalWrappingPaper ,calRibbonLength} = require("../src/material-required.js");
+const { calBoxSurfaceArea, calWrappingPaperArea, calTotalWrappingPaper, calRibbonLength ,calTotalRibbonLength} = require("../src/material-required.js");
 
 describe("wrapping paper", () => {
   describe("surfaceArea", () => {
@@ -30,6 +30,12 @@ describe("ribbon", () => {
     it("should give the amount of ribbon required to wrap a gift", () => {
       strictEqual(calRibbonLength(2, 3, 4), 34);
       strictEqual(calRibbonLength(1, 1, 10), 14);
+    });
+  });
+
+  describe("calTotalRibbonLength", () => {
+    it("should give total amount of ribbon length required", () => {
+      strictEqual(calTotalRibbonLength("2x3x4\n1x1x10"), 48);
     });
   });
 });

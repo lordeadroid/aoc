@@ -33,4 +33,11 @@ const calRibbonLength = (l, w, h) => {
   return calSmallestFacePerimeter(l, w, h) + volume(l, w, h);
 };
 
-module.exports = { calBoxSurfaceArea, calWrappingPaperArea, calTotalWrappingPaper, calRibbonLength };
+const calTotalRibbonLength = (instructions) => {
+  return instructions.split("\n").reduce((totalRibbon, instruction) => {
+    const [l, w, h] = getDimension(instruction);
+    return totalRibbon + calRibbonLength(l, w, h);
+  }, 0);
+}
+
+module.exports = { calBoxSurfaceArea, calWrappingPaperArea, calTotalWrappingPaper, calRibbonLength, calTotalRibbonLength };
