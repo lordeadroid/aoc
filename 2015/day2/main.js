@@ -1,6 +1,6 @@
 const fs = require("fs");
 
-const { calculateTotalWrappingPaper } = require("./src/surface-area");
+const { calculateTotalWrappingPaper } = require("./src/material-required.js");
 
 const readInstructions = () => {
   const instructionFilePath = "./resources/instructions.txt";

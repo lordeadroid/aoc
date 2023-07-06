@@ -1,7 +1,7 @@
 const { strictEqual } = require("assert");
 const { describe, it } = require("node:test");
 
-const { calculateBoxSurfaceArea, calculateWrappingPaperArea, calculateTotalWrappingPaper } = require("../src/surface-area.js");
+const { calculateBoxSurfaceArea, calculateWrappingPaperArea, calculateTotalWrappingPaper } = require("../src/material-required.js");
 
 describe("surfaceArea", () => {
   it("should give a dimension for a box of valid dimensions", () => {
