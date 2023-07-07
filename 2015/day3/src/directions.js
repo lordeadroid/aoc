@@ -5,18 +5,16 @@ class Santa {
     this.#position = { x: 0, y: 0 };
   };
 
-  move([...directions]) {
-    directions.forEach((direction) => {
-      switch (direction) {
-        case ">": this.#position.x++;
-          break;
-        case "^": this.#position.y++;
-          break;
-        case "<": this.#position.x--;
-          break;
-        case "v": this.#position.y--;
-      };
-    });
+  move(direction) {
+    switch (direction) {
+      case ">": this.#position.x++;
+        break;
+      case "^": this.#position.y++;
+        break;
+      case "<": this.#position.x--;
+        break;
+      case "v": this.#position.y--;
+    };
   };
 
   get position() {

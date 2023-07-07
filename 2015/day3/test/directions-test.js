@@ -29,12 +29,22 @@ describe("move santa", () => {
   });
 
   it("should move Santa two house to the North from starting position of (0,0)", () => {
-    const directions = "^^";
     const santa = new Santa();
-    santa.move(directions);
+    santa.move("^");
+    santa.move("^");
 
     const actual = santa.position;
     const expected = { x: 0, y: 2 };
+    deepStrictEqual(actual, expected);
+  });
+
+  it("should move Santa into when multiple directions is given", () => {
+    const santa = new Santa();
+    santa.move("^");
+    santa.move(">");
+
+    const actual = santa.position;
+    const expected = { x: 1, y: 1 };
     deepStrictEqual(actual, expected);
   });
 });
