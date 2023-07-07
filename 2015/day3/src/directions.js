@@ -1,10 +1,27 @@
-const moveSanta = (direction) => {
-  switch (direction) {
-    case ">": return { x: 1, y: 0 };
-    case "^": return { x: 0, y: 1 };
-    case "<": return { x: -1, y: 0 };
-    case "v": return { x: 0, y: -1 };
-  }
+class Santa {
+  #position;
+
+  constructor() {
+    this.#position = { x: 0, y: 0 };
+  };
+
+  move([...directions]) {
+    directions.forEach((direction) => {
+      switch (direction) {
+        case ">": this.#position.x++;
+          break;
+        case "^": this.#position.y++;
+          break;
+        case "<": this.#position.x--;
+          break;
+        case "v": this.#position.y--;
+      };
+    });
+  };
+
+  get position() {
+    return this.#position;
+  };
 };
 
-module.exports = { moveSanta };
+module.exports = { Santa };
