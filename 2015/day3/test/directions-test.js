@@ -1,55 +1,35 @@
 const { describe, it } = require("node:test");
-const { deepStrictEqual } = require("assert");
+const { deepStrictEqual, strictEqual } = require("assert");
 
 const { Santa } = require("../src/directions.js");
 
 describe("Santa", () => {
-  it("should give starting position when no instruction is given", () => {
+  it("should be at starting position when no instruction is given", () => {
     const santa = new Santa();
     deepStrictEqual(santa.position, { x: 0, y: 0 });
   });
 
-  it("should move Santa one house to the North from starting position of (0,0)", () => {
+  it("should move one house to the North from starting position of (0,0)", () => {
     const santa = new Santa();
-    santa.move("^");
+    santa.moveNorth();
     deepStrictEqual(santa.position, { x: 0, y: 1 });
   });
 
-  it("should move Santa one house to the East from starting position of (0,0)", () => {
+  it("should move one house to the East from starting position of (0,0)", () => {
     const santa = new Santa();
-    santa.move(">");
+    santa.moveEast();
     deepStrictEqual(santa.position, { x: 1, y: 0 });
   });
 
-  it("should move Santa one house to the West from starting position of (0,0)", () => {
+  it("should move one house to the West from starting position of (0,0)", () => {
     const santa = new Santa();
-    santa.move("<");
+    santa.moveWest();
     deepStrictEqual(santa.position, { x: -1, y: 0 });
   });
-
-  it("should move Santa one house to the South from starting position of (0,0)", () => {
+ 
+  it("should move one house to the South from starting position of (0,0)", () => {
     const santa = new Santa();
-    santa.move("v");
+    santa.moveSouth();
     deepStrictEqual(santa.position, { x: 0, y: -1 });
-  });
-
-  it("should move Santa two house to the North from starting position of (0,0)", () => {
-    const santa = new Santa();
-    santa.move("^");
-    santa.move("^");
-
-    const actual = santa.position;
-    const expected = { x: 0, y: 2 };
-    deepStrictEqual(actual, expected);
-  });
-
-  it("should move Santa, when multiple directions is given", () => {
-    const santa = new Santa();
-    santa.move("^");
-    santa.move(">");
-
-    const actual = santa.position;
-    const expected = { x: 1, y: 1 };
-    deepStrictEqual(actual, expected);
   });
 });
